@@ -7,21 +7,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {Routes, RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home-page/home.component';
-import { RegistrationComponent } from './pages/registration-page/registration.component';
-import { LogInComponent } from './pages/log-in-page/log-in.component';
- 
+import { LayoutLandingComponent } from './landing-page/landing.component';
+import { LogInComponent } from './log-in-page/log-in.component';
+import { HelloComponent } from './hello-layout/hello.component'
+
 '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule } 
+import { MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule }
 from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
+import {MatIconModule} from '@angular/material/icon';
+import { HeaderComponent } from './header-layout/header.component';
+import { RegistrationComponent } from './registration-page/registration.component';
+
 // определение маршрутов
 const appRoutes: Routes =[
-  { path: '', component: HomeComponent},
-  { path: 'registrate', component: RegistrationComponent},
-  { path: 'login', component: LogInComponent }
+  { path: '', component: LayoutLandingComponent},
+  { path: 'login', component: LogInComponent },
+  { path: 'registration', component: RegistrationComponent },
 ];
 
 @NgModule({
@@ -36,54 +40,18 @@ const appRoutes: Routes =[
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
+    MatIconModule,
     RouterModule.forRoot(appRoutes)// что бы применить маршруты
   ],
   providers: [],
   bootstrap: [AppComponent],
-  declarations: [ AppComponent, 
-    HomeComponent, 
-    RegistrationComponent, 
-    LogInComponent]
+  declarations: [
+    AppComponent,
+    LayoutLandingComponent,
+    LogInComponent,
+    HeaderComponent,
+    HelloComponent,
+    RegistrationComponent,
+  ]
 })
 export class AppModule { }
-
-
-
-
-// import { ReactiveFormsModule }    from '@angular/forms';
-// import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-
-// import { routing }        from './app.routing.module';
-
-
-// import { LoginComponent } from './login';
-// import { RegisterComponent } from './register';
-
-// @NgModule({
-//     imports: [
-//         BrowserModule,
-//         ReactiveFormsModule,
-//         HttpClientModule,
-//         routing
-//     ],
-//     declarations: [
-//         AppComponent,
-//         AlertComponent,
-//         HomeComponent,
-//         LoginComponent,
-//         RegisterComponent
-//     ],
-//     providers: [
-//         AuthGuard,
-//         AlertService,
-//         AuthenticationService,
-//         UserService,
-//         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-//         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-//         // provider used to create fake backend
-//         fakeBackendProvider
-//     ],
-//     bootstrap: [AppComponent]
-// })
